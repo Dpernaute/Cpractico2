@@ -1,5 +1,5 @@
 ---
 
 -name: disable SELinux
- command: "sed -i s/=enforcing/=disabled/g /etc/selinux/config"
+ command: sed -i s/=enforcing/=disabled/g /etc/selinux/config
  become: yes
