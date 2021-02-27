@@ -2,7 +2,7 @@
 
 - name: enable services
   systemd:
-   name: chrony
+   name: chronyd
    state: started
    enabled: yes
    masked: no
