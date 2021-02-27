@@ -6,7 +6,7 @@
    state: started
    enabled: yes
    masked: no
- become: yes
+  become: yes
 
 - name: start Timedatectl
   command: timedatectl set-ntp true
