@@ -5,16 +5,16 @@ ansible_user=ansible
 
 
 [master]
-master.acme.es
+10.0.1.10
 
 [workers]
-worker01.acme.es
-worker02.acme.es
+10.0.1.11
+10.0.1.12
 
 [nfs] 
-nfs.acme.es
+10.0.1.13
 
 [kubernetes]
-master.acme.es
-worker01.acme.es
-worker02.acme.es
+10.0.1.10
+10.0.1.11
+10.0.1.12
