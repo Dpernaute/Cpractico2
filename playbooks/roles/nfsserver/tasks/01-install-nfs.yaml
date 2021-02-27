@@ -30,5 +30,5 @@
 
 # Set the new config.
 - name: set
-   command: exports -s
+   command: "exports -s"
    become: yes
