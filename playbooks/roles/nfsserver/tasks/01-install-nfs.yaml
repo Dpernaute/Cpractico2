@@ -3,14 +3,14 @@
 # Install and enable nfs server 
 - name: install nfs-utils
   dnf:
-    name: "{{ nfs-utils }} "
+    name: nfs-utils
     net-tools: y
     state: latest
   become: yes
 
 - name: enable services
   systemd:
-   name: "{{ nfs-server }}"
+   name: nfs-server
    state: started
    enabled: yes
    masked: no
