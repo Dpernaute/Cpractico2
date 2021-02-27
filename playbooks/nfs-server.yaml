@@ -1,7 +1,7 @@
 ---
 
 - name: Instalación del servidor NFS
-  hosts: nfs.acme.es
+  hosts: 10.0.1.13
   gather_facts: true
   roles:
     - nfsserver
