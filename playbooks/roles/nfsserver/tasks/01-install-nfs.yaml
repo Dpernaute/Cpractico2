@@ -30,10 +30,10 @@
 
 # Read again the exports file.
 - name: read
-   command: "exports -r"
+   command: exports -r
    become: yes
 
 # Set the new config.
 - name: set
-   command: "exports -s"
+   command: exports -s
    become: yes
