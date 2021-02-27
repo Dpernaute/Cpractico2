@@ -9,5 +9,5 @@
   become: yes
 
 - name: start Timedatectl
-  command: timedatectl set-ntp true
+  command: /usr/bin/timedatectl set-ntp true
   
