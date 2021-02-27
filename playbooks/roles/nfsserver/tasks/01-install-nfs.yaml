@@ -12,8 +12,8 @@
 - name: enable services
   systemd:
    name: nfs-server
-   enabled: yes
-   masked: no
+   state: started
+   
 
 # copy export file content into /etc/exports
 - name: copy export fileto /etc/exports
