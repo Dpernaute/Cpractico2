@@ -9,8 +9,7 @@
   user:
     name: kubeadmin
     sudo: ALL=(ALL) NOPASSWD:ALL
-    uid: 1040
-    group: master
+    
 
 # Generating hash password
 # generate a random value for use it as salt and then save in to a variable
