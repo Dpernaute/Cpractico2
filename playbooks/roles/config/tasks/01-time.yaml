@@ -2,6 +2,6 @@
 
 #  timedatectl set-timezone Europe/Madrid
 - name: Set timezone to Europe/Madrid
-  community.general.timezone:
+  timezone:
     name: Europe/Madrid
 
