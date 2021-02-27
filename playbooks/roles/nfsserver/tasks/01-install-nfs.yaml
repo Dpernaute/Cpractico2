@@ -5,13 +5,14 @@
   dnf:
     name: 
        - nfs-utils 
+       - net-tools
     state: latest
   become: yes
 
 - name: enable services
   systemd:
    name: nfs-server
-   state: started
+   state: enabled
    enabled: yes
    masked: no
 
