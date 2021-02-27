@@ -1,0 +1,7 @@
+---
+
+- name: workers config
+  hosts: all
+  gather_facts: true
+  roles:
+    - workers

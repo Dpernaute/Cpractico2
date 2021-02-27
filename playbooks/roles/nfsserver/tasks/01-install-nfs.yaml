@@ -1,0 +1,39 @@
+---
+
+# Install and enable nfs server 
+- name: install nfs-utils
+  dnf:
+    name: "{{ nfs-utils }} "
+    net-tools: y
+    state: latest
+  become: yes
+
+- name: enable services
+  systemd:
+   name: "{{ nfs-server }}"
+   state: started
+   enabled: yes
+   masked: no
+
+# copy export file content into /etc/exports
+- name: copy export fileto /etc/exports
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  when: ansible_os_family == 'RedHat'
+  with_items:
+      - "export"
+
+# Read again the exports file.
+- name: read
+ command: "exports -r"
+ become: yes
+
+# Set the new config.
+- name: set
+ command: "exports -s"
+ become: yes

@@ -1,0 +1,14 @@
+---
+
+# copy hopsts file content into /etc/hosts with ip addresses of all vm
+- name: copy export fileto /etc/exports
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  when: ansible_os_family == 'RedHat'
+  with_items:
+      - "hosts"

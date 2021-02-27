@@ -1,0 +1,18 @@
+---
+
+# opening firewall ports
+- name: Opening ports
+ - firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: yes
+  with_items:
+   - nfs
+   - rpc-bind
+   - mountd
+  
+ # Reload config.
+- name: reload
+ command: "firewall-cmd --reload"
+ become: yes

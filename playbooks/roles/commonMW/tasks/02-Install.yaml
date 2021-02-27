@@ -1,0 +1,47 @@
+---
+
+# adding modprobe br_netfilter
+- name: Opening ports
+ - modprobe:
+    name: br_netfilter
+    state: present
+
+# adding masquerade to firewall 
+  - name: masquerade
+   - firewalld:
+      masquerade: yes
+      state: enabled
+      permanent: yes
+
+# Reload config.
+- name: reload
+   command: "firewall-cmd --reload"
+   become: yes
+
+# Allow Kubernetes trafic management
+- name: Kubernetes trafic management
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/sysctl.d/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  become: yes
+  when: ansible_os_family == 'RedHat'
+  with_items:
+      - "k8s.conf"
+
+# Set config.
+- name: set
+   command: "sysctl --systemd"
+   become: yes
+
+# disabling SWAP
+- name: swap off
+   command: "swapoff  -a"
+   become: yes
+
+# check swap status
+- name: swap off
+   command: "free -m"
+   become: yes

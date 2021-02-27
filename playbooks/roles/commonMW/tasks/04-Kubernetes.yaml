@@ -1,0 +1,102 @@
+---
+
+# Kubernetes repository config
+- name: Kubernetes trafic management
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/yum.repos.d/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  become: yes
+  when: ansible_os_family == 'RedHat'
+  with_items:
+      - "kubernetes.repo"
+
+# installing kubernetes
+- name: installing kubernetes
+  dnf:
+    name: "{{ common_rpms }}"
+    state: present
+  become: yes
+
+# Starting kubelet
+- name: Starting kubelet
+  systemd:
+    name: kubelet
+    state: started
+    enabled: yes
+    masked: no
+  become: yes
+
+# Firewall config in order to access kubernetes services.
+- name: Opening ports
+ - firewalld: 
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: yes
+  with_items:
+   - 6443/tcp
+   - 2379-2380/tcp
+   - 10250/tcp
+   - 10251/tcp
+   - 10252/tcp
+   - 10255/tcp
+
+
+# Kubeadm configure.
+- name: images config
+   command: "kubeadm config images pull"
+   become: yes
+
+# Allow acces from workers  
+- name:
+  - firewalld:
+     rich_rule: rule family=ipv4 source address="{{ item }}" accept
+     permanent: true
+     state: enabled
+    with_items:
+     - 10.0.1.11/16
+     - 10.0.1.12/16
+
+
+
+# Installing CNI plugin.
+- name: images config
+   command: "kubeadm init --pod-network-cidr 10.0.1.0/24"
+   become: yes
+
+# Allow containers access to localhost  
+- name:
+  - firewalld:
+     zone: public
+     rich_rule: rule family=ipv4 source address=172.17.0.0/1 accept
+     permanent: true
+     state: enabled
+    
+
+# Installing CNI plugin and save it in kubeadmExit.
+- name: images config
+   command: "kubeadm init --pod-network-cidr 10.1.1.0/24"
+   become: yes
+   register: kubeadmExit
+
+# Show kubeadmExit
+- debug: msg="{{kubeadm.exit.stdout}}"
+
+# Allow root user to acces into the cluster
+- name: create a directory if it does not exist
+  file:
+    path: "/root/.kube"
+    state: directory
+    mode: '0755'
+
+- name: Authorize user cluster access
+  command: "cp -i /etc/kubernetes/admin.conf /root/.kube/config"
+  become: yes 
+
+- name: Authorize user cluster access
+  command: "chown $(id -u):$(id -g) /root/.kube/config"
+  become: yes 
+

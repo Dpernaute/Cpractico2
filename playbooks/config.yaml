@@ -1,0 +1,7 @@
+---
+
+- name: configurar la zona horaria e instalar chrony y algunos paquetes
+  hosts: all
+  gather_facts: true
+  roles:
+    - config

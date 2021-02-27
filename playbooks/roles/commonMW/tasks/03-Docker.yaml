@@ -1,0 +1,19 @@
+---
+
+- name: docker repository config
+  command: "/usr/bin/dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo"
+  become: yes
+
+- name: installing docker-ce
+  dnf:
+    name: "{{ docker_rpms }}"
+    state: present
+  become: yes
+
+- name: starting up docker config
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+    masked: no
+  become: yes

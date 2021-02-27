@@ -1,0 +1,5 @@
+---
+
+# combine multiple playbooks
+- import_playbook: commonMW.yaml
+- import_playbook: workers.yaml
