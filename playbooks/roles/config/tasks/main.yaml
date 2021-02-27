@@ -3,5 +3,4 @@
 - include_tasks: 01-time.yaml
 - include_tasks: 02-chrony.yaml
 - include_tasks: 03-services.yaml
-- include_tasks: 04-SELinuxOff.yaml
-- include_tasks: 05-nfs-install.yaml
+- include_tasks: 04-nfs-install.yaml
