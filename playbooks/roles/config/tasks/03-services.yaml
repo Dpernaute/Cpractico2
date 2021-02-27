@@ -2,13 +2,11 @@
 
 - name: enable services
   systemd:
-   name: "{{ chrony }}"
+   name: chrony
    state: started
    enabled: yes
    masked: no
  become: yes
- with_items:
-  - "{{ chrony} }"
 
 - name: start Timedatectl
   command: timedatectl set-ntp true
