@@ -1,6 +1,6 @@
 ---
 
-- name: configurar la zona horaria e instalar chrony y algunos paquetes
+- name: Set time zone, install chrony, some services and nfs.
   hosts: all
   gather_facts: true
   roles:

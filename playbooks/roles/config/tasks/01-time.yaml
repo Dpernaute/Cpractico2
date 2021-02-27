@@ -3,5 +3,4 @@
 #  timedatectl set-timezone Europe/Madrid
 - name: Set timezone to Europe/Madrid
   timezone:
-    name: Europe/Madrid
-  become: yes
+   name: Europe/Madrid
