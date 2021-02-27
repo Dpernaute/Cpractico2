@@ -3,7 +3,9 @@
 # Install and enable nfs server 
 - name: install nfs-utils
   dnf:
-    name: nfs-utils net-tools
+    name: 
+       - nfs-utils 
+       - net-tools
     state: latest
   become: yes
 
