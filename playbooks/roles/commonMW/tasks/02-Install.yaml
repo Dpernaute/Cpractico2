@@ -37,10 +37,5 @@
 
 # disabling SWAP
 - name: swap off
-   command: "swapoff  -a"
-   become: yes
-
-# check swap status
-- name: swap off
-   command: "free -m"
+   command: swapoff  --all
    become: yes
