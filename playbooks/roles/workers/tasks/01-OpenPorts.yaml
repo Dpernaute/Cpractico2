@@ -16,9 +16,11 @@
   shell: cat {{ hostvars['DUMMY_HOST']['KUBEADMEXIT'] }} |tail -1
   register: kubeadmExit2
 
+- debug: msg="{{kubeadmExit2.stdout}}"
+
 # Reload config.
 - name: reload
-  command: "kubeadm join 10.0.1.11:6443 --token gmk4le.8gsfpknu99k78qut {{ kubeadmExit2.stdout }}"
+  command: "kubeadm join 10.0.1.11:6443 --token gmk4le.8gsfpknu99k78qut {{kubeadmExit2.stdout}}"
   become: yes
 
 - lineinfile:
