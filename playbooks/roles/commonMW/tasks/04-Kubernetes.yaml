@@ -62,7 +62,7 @@
   register: exit
 
 # Allow acces from workers  
-- name:
+- name: acces from workers  
   firewalld:
     rich_rule: rule family=ipv4 source address="{{ item }}" accept
     permanent: true
@@ -75,7 +75,7 @@
 
 # Installing CNI plugin.
 - name: images config
-  command: "kubeadm init --pod-network-cidr 10.0.1.0/24"
+  command: "kubeadm init --v=5 --pod-network-cidr 10.0.1.0/24"
   become: yes
 
 # Allow containers access to localhost  
