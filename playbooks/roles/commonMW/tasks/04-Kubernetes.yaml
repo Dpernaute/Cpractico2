@@ -81,7 +81,7 @@
 
 # Installing CNI plugin.
 - name: images config
-  command: "kubeadm init --pod-network-cidr 10.0.1.0/24 --ignore-preflight-errors=ERROR NumCPU"
+  command: "kubeadm init --pod-network-cidr 10.0.1.0/24 --ignore-preflight-errors=all"
   become: yes
 
 # Allow containers access to localhost  
