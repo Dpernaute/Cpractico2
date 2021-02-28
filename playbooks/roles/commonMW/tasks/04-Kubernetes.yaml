@@ -100,13 +100,11 @@
   become: yes
   register: kubeadmExit
 
-- name: copy variable stdout into a file
-  copy:
-    src: kubeadmExit.stdout
-    dest: "/home/ansible/kubeadmFile"
-    owner: root
-    group: root
-    mode: '0644'
+- name: copy variable stdout into a file 
+  local_action: 
+    module: copy 
+    content: kubeadmExit.stdout
+    dest: home/ansible/kubeadmFile
   become: yes
   when: ansible_os_family == 'RedHat'
 
