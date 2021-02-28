@@ -15,6 +15,6 @@
  # Reload config.
 - firewalld:
     masquerade: yes
-     state: enabled
-     permanent: yes
-     zone: dmz
+    state: enabled
+    permanent: yes
+    zone: dmz
