@@ -7,17 +7,16 @@
     zone: public
     permanent: yes
     state: enabled
-    immediate: yes
   become: true
 
 - name: Echo the output kubeadmExit variable vaule last line
-   shell: cat "{{kubeadmExit.stdout}}" |tail -1
-   register: kubeadmExit2
+  shell: cat "{{kubeadmExit.stdout}}" |tail -1
+  register: kubeadmExit2
 
 # Reload config.
 - name: reload
-   command: "kubeadm join 10.0.1.11:6443 --token gmk4le.8gsfpknu99k78qut {{ kubeadmExit2.stdout }}"
-   become: yes
+  command: "kubeadm join 10.0.1.11:6443 --token gmk4le.8gsfpknu99k78qut {{ kubeadmExit2.stdout }}"
+  become: yes
 
 - lineinfile:
     path: /etc/apt/sources.list
