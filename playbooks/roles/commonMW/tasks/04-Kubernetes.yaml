@@ -64,7 +64,7 @@
 
 # Installing CNI plugin.
 - name: images config
-   command: "kubeadm init --pod-network-cidr 10.0.1.0/24"
+   shell: "kubeadm init --pod-network-cidr 10.0.1.0/24"
    become: yes
 
 # Allow containers access to localhost  
