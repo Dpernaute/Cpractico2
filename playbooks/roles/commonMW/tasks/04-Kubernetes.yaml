@@ -16,7 +16,10 @@
 # installing kubernetes
 - name: installing kubernetes
   dnf:
-    name: kubelet kubeadm kubectl
+    name: 
+     - kubelet 
+     - kubeadm 
+     - kubectl
     state: present
   become: yes
 
