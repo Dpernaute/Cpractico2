@@ -13,6 +13,8 @@
    - mountd
   
  # Reload config.
-- name: reload
-   command: "firewall-cmd --reload"
-   become: yes
+- firewalld:
+    masquerade: yes
+     state: enabled
+     permanent: yes
+     zone: dmz
