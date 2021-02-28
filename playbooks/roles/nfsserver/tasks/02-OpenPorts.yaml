@@ -14,5 +14,5 @@
   
  # Reload config.
 - name: reload
- command: "firewall-cmd --reload"
- become: yes
+   command: "firewall-cmd --reload"
+   become: yes
