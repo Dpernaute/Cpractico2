@@ -37,7 +37,7 @@
 - name: Opening ports
   firewalld: 
     port: "{{ item }}"
-    permanent: true
+    permanent: yes
     state: enabled
     immediate: yes
   with_items:
