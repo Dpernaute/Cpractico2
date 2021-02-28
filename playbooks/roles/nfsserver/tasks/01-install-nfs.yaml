@@ -13,7 +13,7 @@
   systemd:
    name: nfs-server
    state: restarted
-   enabled: yes
+   enabled: true
    masked: no
    
    
