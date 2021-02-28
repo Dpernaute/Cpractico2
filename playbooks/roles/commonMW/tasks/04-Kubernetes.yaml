@@ -102,12 +102,11 @@
 
 - name: copy variable stdout into a file
   copy:
-    src: "{{ item }}"
+    src: "${{ item }}"
     dest: "/home/ansible/kubeadmFile"
     owner: root
     group: root
     mode: '0644'
-    remote_src: no
   become: yes
   when: ansible_os_family == 'RedHat'
   with_items: 
