@@ -2,7 +2,8 @@
 
 # Installing tigera operator.
 - name: install Tigera
-  command: "kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml --dry-run=client"
+  command: "kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml --dry-run=client -o yaml"
+  become: yes
 
 # Install Calico: definition file
 - name: Download foo.conf
