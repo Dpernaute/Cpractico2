@@ -8,11 +8,11 @@
 
 # adding masquerade to firewall 
 - name: masquerade
-   firewalld:
+  firewalld:
     masquerade: yes
     state: enabled
     permanent: yes
-   become: yes
+  become: yes
 
 # Reload config.
 - name: reload
