@@ -100,13 +100,27 @@
   become: yes
   register: kubeadmExit
 
-# Show kubeadmExit
-- debug: msg="{{kubeadmExit.stdout}}"
+- name: copy variable stdout into a file
+  copy:
+    src: "{{ item }}"
+    dest: "/home/ansible/kubeadmFile"
+    owner: root
+    group: root
+    mode: '0644'
+    remote_src: no
+  become: yes
+  when: ansible_os_family == 'RedHat'
+  with_items: 
+    - "kubeadmExit.stdout"
+
+- name: Register a new value
+  shell: echo "home/ansible/kubeadmFile"
+  register: PLAY1VAR
 
 - name: Register dummy host with variable
   add_host:
     name: "DUMMY_HOST"
-    KUBEADMEXIT: " {{ kubeadmExit.stdout }}"
+    KUBEADMEXIT: "{{ PLAY1VAR.stdout }}"
 
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
