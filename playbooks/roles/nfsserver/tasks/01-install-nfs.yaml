@@ -13,8 +13,8 @@
   service:
     name: "nfs-server"
     state: "started"
-    enabled: true
-  become: true
+    enabled: yes
+  become: yes
 
    
    
@@ -22,7 +22,7 @@
 # copy export file content into /etc/exports
 - name: copy export fileto /etc/exports
   copy:
-    remote_src: "/files/{{ item }}"
+    src: "{{ item }}"
     dest: "/etc/{{ item }}"
     owner: root
     group: root
