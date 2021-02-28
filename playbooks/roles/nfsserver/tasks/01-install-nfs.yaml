@@ -15,7 +15,7 @@
    state: restarted
    enabled: yes
    masked: no
-   daemon_reload: yes
+   
    
 
 # copy export file content into /etc/exports
