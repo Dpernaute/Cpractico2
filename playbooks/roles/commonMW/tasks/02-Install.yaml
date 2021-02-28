@@ -7,11 +7,12 @@
     state: present
 
 # adding masquerade to firewall 
-  - name: masquerade
-    firewalld:
-      masquerade: yes
-      state: enabled
-      permanent: yes
+- name: masquerade
+   firewalld:
+    masquerade: yes
+    state: enabled
+    permanent: yes
+   become: yes
 
 # Reload config.
 - name: reload
