@@ -3,11 +3,14 @@
 # opening worker ports
 - name: firewall configuration1 for master
   firewalld:
-    port: {10250,30000-32767}/tcp
+    port: "{{ item }}"
     zone: public
     permanent: yes
     state: enabled
   become: true
+  with_items:
+   - 10250/tcp
+   - 30000-32767/tcp
 
 - name: Echo the output kubeadmExit variable vaule last line
   shell: cat "{{kubeadmExit.stdout}}" |tail -1
