@@ -30,8 +30,10 @@
 
 # Set config.
 - name: set
-   command: "sysctl --system"
-   become: yes
+   sysctl:
+    name: system
+    reload: yes
+
 
 # disabling SWAP
 - name: swap off
