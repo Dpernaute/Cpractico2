@@ -2,9 +2,9 @@
 
 - name: config workers and master
   hosts:
-    - master.acme.es
-    - worker01.master.es
-    - worker02.acme.es
+    - 10.0.1.10
+    - 10.0.1.11
+    - 10.0.1.12
   gather_facts: true
   roles:
     - commonMW
