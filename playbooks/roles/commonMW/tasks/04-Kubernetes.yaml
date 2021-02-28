@@ -112,8 +112,14 @@
   become: yes
 
 - name: Authorize user cluster access
-  command: "cp -i /etc/kubernetes/admin.conf /root/.kube/config"
-  become: yes 
+  copy:
+    src: "/etc/kubernetes/admin.conf"
+    dest: "/root/.kube/config"
+    owner: root
+    group: root
+    mode: '0644'
+  become: yes
+  when: ansible_os_family == 'RedHat'
 
 - name: Change kubeconfig file permission
   file:
