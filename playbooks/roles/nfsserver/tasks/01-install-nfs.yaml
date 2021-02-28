@@ -22,7 +22,7 @@
 # copy export file content into /etc/exports
 - name: copy export fileto /etc/exports
   copy:
-    src: "/files/{{ item }}"
+    remote_src: "/files/{{ item }}"
     dest: "/etc/{{ item }}"
     owner: root
     group: root
