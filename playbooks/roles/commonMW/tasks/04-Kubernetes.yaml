@@ -73,7 +73,7 @@
   become: yes
 
 # Reload config.
-- firewalld: Reload
+- firewalld:
     masquerade: yes
     state: enabled
     permanent: yes
