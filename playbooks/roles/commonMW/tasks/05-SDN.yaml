@@ -16,7 +16,7 @@
 
 - name: Replace cidr entry with POD IP
   lineinfile:
-    path: /tmp/custom-resources.yaml
+    path: /var/tmp/custom-resources.yaml
     regexp: '^(.*)cidr:(.*)'
     line: 'cidr: 10.1.1.0/16'
     owner: root
