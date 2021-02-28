@@ -15,7 +15,7 @@
 
 # installing kubernetes
 - name: installing kubernetes
-  yum:
+  dnf:
     name: "{{ common_rpms }}"
     state: present
   become: yes
