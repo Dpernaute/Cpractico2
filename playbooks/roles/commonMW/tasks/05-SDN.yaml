@@ -9,7 +9,8 @@
 - name: Download foo.conf
   get_url:
     url: https://docs.projectcalico.org/manifests/custom-resources.yaml
-    dest: /etc/foo.conf
+    dest: /dev/temp
+    tmp_dest: /dev/temp
     force: yes
     mode: '0440'
 
