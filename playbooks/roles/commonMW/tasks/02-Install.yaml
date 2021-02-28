@@ -2,13 +2,13 @@
 
 # adding modprobe br_netfilter
 - name: Opening ports
- - modprobe:
+  modprobe:
     name: br_netfilter
     state: present
 
 # adding masquerade to firewall 
   - name: masquerade
-   - firewalld:
+    firewalld:
       masquerade: yes
       state: enabled
       permanent: yes

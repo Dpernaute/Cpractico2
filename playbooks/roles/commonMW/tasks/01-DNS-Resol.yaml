@@ -1,7 +1,7 @@
 ---
 
 # copy hopsts file content into /etc/hosts with ip addresses of all vm
-- name: copy export fileto /etc/exports
+- name: copy hosts fileto /etc/hosts
   copy:
     src: "{{ item }}"
     dest: "/etc/{{ item }}"
