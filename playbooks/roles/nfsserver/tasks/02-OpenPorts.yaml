@@ -10,10 +10,12 @@
    - nfs
    - rpc-bind
    - mountd
-  
+  become: yes
+
  # Reload config.
 - firewalld:
     masquerade: yes
     state: enabled
     permanent: yes
     zone: dmz
+  become: yes
