@@ -10,6 +10,7 @@
   get_url:
     url: https://docs.projectcalico.org/manifests/custom-resources.yaml
     dest: /etc/foo.conf
+    force: yes
     mode: '0440'
 
 - name: Replace cidr entry with POD IP
