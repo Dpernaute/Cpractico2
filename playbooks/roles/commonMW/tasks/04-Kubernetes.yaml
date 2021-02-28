@@ -30,6 +30,7 @@
     state: started
     enabled: yes
     masked: no
+    daemon_reload: yes
   become: yes
 
 # Firewall config in order to access kubernetes services.
