@@ -23,5 +23,5 @@
 
 # Installing Calico.
 - name: Installing Calico
-   command: "kubectl apply -f custom-resources.yaml"
-   become: yes
+  command: "kubectl apply -f custom-resources.yaml"
+  become: yes
