@@ -115,8 +115,10 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Register a new value
-  shell: echo "home/ansible/kubeadmFile"
+  shell: echo "/home/ansible/kubeadmFile"
   register: PLAY1VAR
+
+- debug: msg="{{PLAY1VAR.stdout}}"
 
 - name: Register dummy host with variable
   add_host:
