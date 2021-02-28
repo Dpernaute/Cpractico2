@@ -47,9 +47,9 @@
 
 # Kubeadm configure.
 - name: images config
-   command: kubeadm config images pull
-   become: yes
-   register: exit
+  command: "kubeadm config images pull"
+  become: yes
+  register: exit
 
 # Allow acces from workers  
 - name:
@@ -65,8 +65,8 @@
 
 # Installing CNI plugin.
 - name: images config
-   shell: "kubeadm init --pod-network-cidr 10.0.1.0/24"
-   become: yes
+  command: "kubeadm init --pod-network-cidr 10.0.1.0/24"
+  become: yes
 
 # Allow containers access to localhost  
 - name:
@@ -80,9 +80,9 @@
 
 # Installing CNI plugin and save it in kubeadmExit.
 - name: images config
-   command: "kubeadm init --pod-network-cidr 10.1.1.0/24"
-   become: yes
-   register: kubeadmExit
+  command: "kubeadm init --pod-network-cidr 10.1.1.0/24"
+  become: yes
+  register: kubeadmExit
 
 # Show kubeadmExit
 - debug: msg="{{kubeadm.exit.stdout}}"
