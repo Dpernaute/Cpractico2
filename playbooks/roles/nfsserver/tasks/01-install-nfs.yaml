@@ -9,7 +9,7 @@
     state: latest
   become: yes
 
-- name: restart nfs-server
+- name: start nfs-server
   service:
     name: "nfs-server"
     state: "started"
@@ -22,7 +22,7 @@
 # copy export file content into /etc/exports
 - name: copy export fileto /etc/exports
   copy:
-    src: "{{ item }}"
+    src: "/files/{{ item }}"
     dest: "/etc/{{ item }}"
     owner: root
     group: root
