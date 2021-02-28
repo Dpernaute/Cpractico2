@@ -14,10 +14,6 @@
     permanent: yes
   become: yes
 
-# Reload config.
-- name: reload
-   command: "firewall-cmd --reload"
-   become: yes
 
 # Allow Kubernetes trafic management
 - name: Kubernetes trafic management
