@@ -9,12 +9,20 @@
     state: latest
   become: yes
 
-- name: enable services
-  systemd:
-   name: nfs-server
-   state: restarted
-   enabled: true
-   masked: no
+- name: restart nfs-kernel-server
+  service:
+    name: "nfs-kernel-server"
+    state: "restarted"
+    enabled: true
+  become: true
+
+- name: restart nfs-server
+  service:
+    name: "nfs-server"
+    state: "restarted"
+    enabled: true
+  become: true
+
    
    
 
