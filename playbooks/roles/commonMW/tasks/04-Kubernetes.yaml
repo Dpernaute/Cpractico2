@@ -101,7 +101,7 @@
   register: kubeadmExit
 
 # Show kubeadmExit
-- debug: msg="{{kubeadm.exit.stdout}}"
+- debug: msg="{{kubeadmExit.stdout}}"
 
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
