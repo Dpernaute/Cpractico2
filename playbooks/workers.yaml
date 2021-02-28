@@ -1,7 +1,9 @@
 ---
 
 - name: workers config
-  hosts: all
+  hosts: 
+    - 10.0.1.11
+    - 10.0.1.12
   gather_facts: true
   roles:
     - workers
