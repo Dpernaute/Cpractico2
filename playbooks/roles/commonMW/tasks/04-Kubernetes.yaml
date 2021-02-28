@@ -47,7 +47,7 @@
 
 # Kubeadm configure.
 - name: images config
-   command: kubeadm config images pull
+   command: "kubeadm config images pull"
    become: yes
 
 # Allow acces from workers  
