@@ -106,17 +106,15 @@
     state: touch
   become: yes
 
-- name: copy variable stdout into a file 
-  local_action: 
-    module: copy 
-    content: kubeadmExit.stdout
-    dest: /home/ansible/kubeadmFile
-  become: yes
-  when: ansible_os_family == 'RedHat'
+- name: Creating a file with content
+    copy:
+      dest: "/home/ansible/kubeadmFile"
+      content: kubeadmExit.stdout
 
 - name: Register a new value
-  shell: echo "/home/ansible/kubeadmFile"
+  shell: cat "/home/ansible/kubeadmFile"
   register: PLAY1VAR
+  become: yes
 
 - debug: msg="{{PLAY1VAR.stdout}}"
 
