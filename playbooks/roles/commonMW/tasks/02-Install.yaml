@@ -5,7 +5,8 @@
   modprobe:
     name: br_netfilter
     state: present
-
+  become: yes
+  
 # adding masquerade to firewall 
 - name: masquerade
   firewalld:
