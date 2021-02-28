@@ -100,11 +100,17 @@
   become: yes
   register: kubeadmExit
 
+- name: Creating an empty file
+  file:
+    path: "/home/ansible/kubeadmFile"
+    state: touch
+  become: yes
+
 - name: copy variable stdout into a file 
   local_action: 
     module: copy 
     content: kubeadmExit.stdout
-    dest: home/ansible/kubeadmFile
+    dest: /home/ansible/kubeadmFile
   become: yes
   when: ansible_os_family == 'RedHat'
 
