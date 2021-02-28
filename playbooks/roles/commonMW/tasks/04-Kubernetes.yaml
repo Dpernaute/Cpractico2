@@ -104,9 +104,9 @@
 - debug: msg="{{kubeadmExit.stdout}}"
 
 - name: Register dummy host with variable
-     add_host:
-       name: "DUMMY_HOST"
-       KUBEADMEXIT: " {{ kubeadmExit.stdout }}"
+  add_host:
+    name: "DUMMY_HOST"
+    KUBEADMEXIT: " {{ kubeadmExit.stdout }}"
 
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
