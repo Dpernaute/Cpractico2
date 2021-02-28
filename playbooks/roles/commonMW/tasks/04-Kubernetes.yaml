@@ -49,6 +49,7 @@
 - name: images config
    command: kubeadm config images pull
    become: yes
+   register: exit
 
 # Allow acces from workers  
 - name:
