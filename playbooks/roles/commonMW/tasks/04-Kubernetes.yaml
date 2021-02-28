@@ -70,7 +70,7 @@
   with_items:
     - 10.0.1.11/16
     - 10.0.1.12/16
-
+  become: yes
 
 
 # Installing CNI plugin.
