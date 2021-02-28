@@ -37,5 +37,5 @@
 
 # disabling SWAP
 - name: swap off
-   command: swapoff  --all
-   become: yes
+  command: swapoff  -a
+  become: yes
