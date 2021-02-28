@@ -11,6 +11,8 @@
   with_items:
    - 10250/tcp
    - 30000-32767/tcp
+   
+- debug: msg="{{ hostvars['DUMMY_HOST']['KUBEADMEXIT'] }}"
 
 - name: Echo the output kubeadmExit variable vaule last line
   shell: cat {{ hostvars['DUMMY_HOST']['KUBEADMEXIT'] }} |tail -1
