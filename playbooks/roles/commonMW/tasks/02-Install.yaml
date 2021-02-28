@@ -30,7 +30,7 @@
 
 # Set config.
 - name: set
-   command: "sysctl --systemd"
+   command: /usr/bin/sysctl --systemd
    become: yes
 
 # disabling SWAP
