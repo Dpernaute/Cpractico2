@@ -31,7 +31,7 @@
 
 # Firewall config in order to access kubernetes services.
 - name: Opening ports
- - firewalld: 
+  firewalld: 
     port: "{{ item }}"
     permanent: true
     state: enabled
@@ -52,13 +52,13 @@
 
 # Allow acces from workers  
 - name:
-  - firewalld:
-     rich_rule: rule family=ipv4 source address="{{ item }}" accept
-     permanent: true
-     state: enabled
-    with_items:
-     - 10.0.1.11/16
-     - 10.0.1.12/16
+  firewalld:
+    rich_rule: rule family=ipv4 source address="{{ item }}" accept
+    permanent: true
+    state: enabled
+  with_items:
+    - 10.0.1.11/16
+    - 10.0.1.12/16
 
 
 
@@ -69,11 +69,12 @@
 
 # Allow containers access to localhost  
 - name:
-  - firewalld:
-     zone: public
-     rich_rule: rule family=ipv4 source address=172.17.0.0/1 accept
-     permanent: true
-     state: enabled
+  firewalld:
+    zone: public
+    rich_rule: rule family=ipv4 source address=172.17.0.0/1 accept
+    permanent: true
+    state: enabled
+  become: yes
     
 
 # Installing CNI plugin and save it in kubeadmExit.
@@ -91,6 +92,7 @@
     path: "/root/.kube"
     state: directory
     mode: '0755'
+  become: yes
 
 - name: Authorize user cluster access
   command: "cp -i /etc/kubernetes/admin.conf /root/.kube/config"
