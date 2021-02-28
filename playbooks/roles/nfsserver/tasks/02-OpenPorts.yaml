@@ -17,5 +17,4 @@
     masquerade: yes
     state: enabled
     permanent: yes
-    zone: dmz
   become: yes
