@@ -16,7 +16,7 @@
 # installing kubernetes
 - name: installing kubernetes
   dnf:
-    name: "{{ common_rpms }}"
+    name: kubelet kubeadm kubectl
     state: present
   become: yes
 
