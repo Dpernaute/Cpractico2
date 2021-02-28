@@ -39,14 +39,13 @@
     state: enabled
     permanent: yes
   become: yes
-  
+
 # Firewall config in order to access kubernetes services.
 - name: Opening ports
   firewalld: 
     port: "{{ item }}"
     permanent: yes
     state: enabled
-    immediate: yes
   with_items:
    - 6443/tcp
    - 2379-2380/tcp
