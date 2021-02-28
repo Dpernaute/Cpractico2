@@ -30,7 +30,7 @@
 
 # Set config.
 - name: set
-   sysctl:
+  sysctl:
     name: system
     reload: yes
 
