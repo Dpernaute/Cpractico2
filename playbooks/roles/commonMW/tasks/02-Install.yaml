@@ -30,7 +30,7 @@
 
 # Set config.
 - name: set
-   command: sysctl --system
+   command: "sysctl --system"
    become: yes
 
 # disabling SWAP
