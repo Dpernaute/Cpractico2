@@ -32,7 +32,6 @@
 # Set config.
 - name: set
   sysctl:
-    name: system
     reload: yes
   become: yes
 
