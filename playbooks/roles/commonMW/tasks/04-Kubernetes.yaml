@@ -33,6 +33,13 @@
     daemon_reload: yes
   become: yes
 
+# Reload config.
+- firewalld:
+    masquerade: yes
+    state: enabled
+    permanent: yes
+  become: yes
+  
 # Firewall config in order to access kubernetes services.
 - name: Opening ports
   firewalld: 
