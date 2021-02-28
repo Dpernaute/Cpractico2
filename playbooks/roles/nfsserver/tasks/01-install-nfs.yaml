@@ -9,17 +9,10 @@
     state: latest
   become: yes
 
-- name: restart nfs-kernel-server
-  service:
-    name: "nfs-kernel-server"
-    state: "restarted"
-    enabled: true
-  become: true
-
 - name: restart nfs-server
   service:
     name: "nfs-server"
-    state: "restarted"
+    state: "started"
     enabled: true
   become: true
 
