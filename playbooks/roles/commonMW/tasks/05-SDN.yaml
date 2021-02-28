@@ -10,7 +10,7 @@
   get_url:
     url: https://docs.projectcalico.org/manifests/custom-resources.yaml
     dest: /dev/temp
-    tmp_dest: /dev/temp
+    tmp_dest: /var/tmp
     force: yes
     mode: '0440'
 
