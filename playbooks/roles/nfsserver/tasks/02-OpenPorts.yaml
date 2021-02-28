@@ -2,7 +2,7 @@
 
 # opening firewall ports
 - name: Opening ports
- - firewalld:
+  firewalld:
     service: "{{ item }}"
     permanent: true
     state: enabled
