@@ -44,6 +44,7 @@
 - name: Opening ports
   firewalld: 
     port: "{{ item }}"
+    permanent: yes
     state: enabled
   with_items:
    - 6443/tcp
@@ -52,7 +53,7 @@
    - 10251/tcp
    - 10252/tcp
    - 10255/tcp
-
+  become: yes
 
 # Kubeadm configure.
 - name: images config
