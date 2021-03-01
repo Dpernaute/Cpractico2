@@ -136,15 +136,15 @@
   become: yes
 
 - name: Echo the output token file vaule
-  shell: cat /home/ansible/kubeadmFile.txt
-  register: kubeadmExit
+  shell: cat /home/ansible/kubeadmFile.txt |tail -2
+  register: kubeadmExit2
    
-- debug: msg="{{kubeadmExit.stdout}}"
+- debug: msg="{{kubeadmExit2.stdout}}"
 
 - name: Register dummy host with variable
   add_host:
     name: "DUMMY_HOST"
-    PLAY1VAR_NEW: "{{ kubeadmExit.stdout }}"
+    PLAY1VAR_NEW: "{{ kubeadmExit2.stdout }}"
 
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
