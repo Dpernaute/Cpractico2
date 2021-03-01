@@ -12,12 +12,25 @@
    - 10250/tcp
    - 30000-32767/tcp
 
-- name: Echo the output kubeadmExit variable vaule last line
-  shell: sed -i  "s/^ *//; s/ *$//; /^$/d; /^\s*$/d; s/^\t*//; s/\t*$//;" /home/ansible/kubeadmFile
+- name: Creating an empty file
+  file:
+    path: "/home/ansible/kubeadmFile"
+    state: touch
   become: yes
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat /home/ansible/kubeadmFile |tail -f |grep "discovery-token-ca-cert-hash"  
+  shell: sed -i  "s/^ *//; s/ *$//; /^$/d; /^\s*$/d; s/^\t*//; s/\t*$//;" /home/ansible/kubeadmFile
+  become: yes
+  register: kubeadmExit
+
+- name: Creating a file with content
+  copy:
+    dest: "/home/ansible/kubeadmFile2"
+    content: "{{ kubeadmExit.stdout_lines }}"
+  become: yes
+
+- name: Echo the output kubeadmExit variable vaule last line
+  shell: cat /home/ansible/kubeadmFile2 |tail -f |grep "discovery-token-ca-cert-hash"  
   register: kubeadmExit2
 
 
