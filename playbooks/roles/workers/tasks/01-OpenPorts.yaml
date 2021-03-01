@@ -12,7 +12,7 @@
    - 10250/tcp
    - 30000-32767/tcp
 
-- name: Echo the output kubeadmExit variable vaule last line
+- name: Echo the output kubeadmFile
   shell: cat /home/ansible/kubeadmExit
 
 
