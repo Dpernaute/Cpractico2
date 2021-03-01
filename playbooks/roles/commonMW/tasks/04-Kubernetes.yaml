@@ -114,7 +114,7 @@
 
 - name: Echo the output kubeadmExit variable vaule last line
   shell: cat /home/ansible/kubeadmFile.txt |tail -2
-  register: kubeadmExit
+  register: kubeadmExit2lines
 
 - name: Creating an empty file
   file:
@@ -125,18 +125,18 @@
 - name: Creating a file with content
   copy:
     dest: "/home/ansible/token.txt"
-    content: "{{ kubeadmExit.stdout }}"
+    content: "{{ kubeadmExit2lines.stdout }}"
   become: yes
 
 - name: Ansible replace string 
   replace:
     path:  "/home/ansible/token.txt"
-    regexp: "\\\n"
+    regexp: "\\\n   "
     replace: " "
   become: yes
 
 - name: Echo the output token file vaule
-  shell: cat /home/ansible/kubeadmFile.txt |tail -2
+  shell: cat /home/ansible/token.txt
   register: kubeadmExit2
    
 - debug: msg="{{kubeadmExit2.stdout}}"
