@@ -12,7 +12,9 @@
    - 10250/tcp
    - 30000-32767/tcp
 
-- debug: msg="{{ hostvars['DUMMY_HOST']['KUBEADMEXIT'] }}"
+- name: Echo the output kubeadmExit variable vaule last line
+  shell: cat /home/ansible/kubeadmExit
+
 
 - name: Echo the output kubeadmExit variable vaule last line
   shell: cat /home/ansible/kubeadmExit |tail -1
