@@ -19,7 +19,7 @@
 - debug: msg="{{kubeadmExit.stdout_lines}}"
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat /home/ansible/kubeadmFile |tail -2
+  shell: cat /home/ansible/kubeadmFile |tail -1
   register: kubeadmExit2
 
 - debug: msg="{{kubeadmExit2.stdout_lines}}"
