@@ -109,7 +109,8 @@
 - name: Creating a file with content
   copy:
     dest: "/home/ansible/kubeadmFile.conf"
-    content: "{{ kubeadmExit.stdout }}"
+    content: "{{ kubeadmExit.stdout_lines }}"
+  become: yes
 
 - name: Register a new value
   shell: cat "/home/ansible/kubeadmFile.conf"

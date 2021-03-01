@@ -15,18 +15,18 @@
 # generate a random value for use it as salt and then save in to a variable
 # with delegate_to the task is executed locally
 - name: enerate a random value for use it as salt for generate the password
-   command: /usr/bin/openssl rand -base64 32
-    register: random_pass
-    delegate_to: 127.0.0.1
+  command: /usr/bin/openssl rand -base64 32
+  register: random_pass
+   delegate_to: 127.0.0.1
 
 - name: make the hash (sha512)
-   command: "/usr/bin/openssl passwd -6 -salt {{ random_pass.stdout }} {{ password }}"
-    register: password_sha512
-    delegate_to: 127.0.0.1
+  command: "/usr/bin/openssl passwd -6 -salt {{ random_pass.stdout }} {{ password }}"
+  register: password_sha512
+   delegate_to: 127.0.0.1
 
 - name: debug
-   debug: msg="El hash del password introducido es {{ password_sha512.stdout }}"
-      delegate_to: 127.0.0.1
+  debug: msg="El hash del password introducido es {{ password_sha512.stdout }}"
+   delegate_to: 127.0.0.1
 
 
 
@@ -36,6 +36,7 @@
     path: "/home/kubeadmin/.kube"
     state: directory
     mode: '0755'
+  become: yes
 
 - name: Authorize user cluster access
   command: "cp -i /etc/kubernetes/admin.conf /root/.kube/config"
