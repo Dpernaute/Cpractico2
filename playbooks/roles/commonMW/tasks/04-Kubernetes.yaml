@@ -112,18 +112,6 @@
     content: "{{ kubeadmExit.stdout_lines }}"
   become: yes
 
-- name: Register a new value
-  shell: cat "/home/ansible/kubeadmFile"
-  register: PLAY1VAR
-  become: yes
-
-- debug: msg="{{PLAY1VAR.stdout_lines}}"
-
-- name: Register dummy host with variable
-  add_host:
-    name: "DUMMY_HOST"
-    KUBEADMEXIT: "{{ PLAY1VAR.stdout_lines }}"
-
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
   file:

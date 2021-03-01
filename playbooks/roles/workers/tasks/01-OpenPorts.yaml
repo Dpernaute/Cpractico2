@@ -13,11 +13,11 @@
    - 30000-32767/tcp
 
 - name: Echo the output kubeadmFile
-  shell: cat /home/ansible/kubeadmExit
+  shell: cat /home/ansible/kubeadmFile
 
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat /home/ansible/kubeadmExit |tail -1
+  shell: cat /home/ansible/kubeadmFile |tail -1
   register: kubeadmExit2
 
 - debug: msg="{{kubeadmExit2.stdout}}"
