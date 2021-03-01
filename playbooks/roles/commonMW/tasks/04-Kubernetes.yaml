@@ -143,7 +143,7 @@
 - name: Register dummy host with variable
   add_host:
     name: "DUMMY_HOST"
-    PLAY1VAR_NEW: "{{ kubeadmExit2.stdout }}"
+    PLAY1VAR_NEW: "{{kubeadmExit2.stdout}}"
 
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
