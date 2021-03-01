@@ -17,7 +17,7 @@
   shell: cat /home/ansible/kubeadmFile
   register: kubeadmExit
 
-- debug: msg="{{kubeadmExit.stdout_lines}}"
+- debug: msg="{{kubeadmExit}}"
 
 - name: Creating a file with content
   copy:
