@@ -102,18 +102,18 @@
 
 - name: Creating an empty file
   file:
-    path: "/home/ansible/kubeadmFile.conf"
+    path: "/home/ansible/kubeadmFile"
     state: touch
   become: yes
 
 - name: Creating a file with content
   copy:
-    dest: "/home/ansible/kubeadmFile.conf"
+    dest: "/home/ansible/kubeadmFile"
     content: "{{ kubeadmExit.stdout_lines }}"
   become: yes
 
 - name: Register a new value
-  shell: cat "/home/ansible/kubeadmFile.conf"
+  shell: cat "/home/ansible/kubeadmFile"
   register: PLAY1VAR
   become: yes
 
