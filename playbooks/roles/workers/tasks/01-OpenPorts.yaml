@@ -20,7 +20,7 @@
   shell: cat /home/ansible/kubeadmFile |tail -2
   register: kubeadmExit2
 
-- debug: msg="{{kubeadmExit2.stdout_lines}}"
+- debug: msg="{{kubeadmExit2.stdout}}"
 
 # Reload config.
 - name: reload
