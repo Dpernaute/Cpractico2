@@ -30,7 +30,7 @@
   become: yes
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat /home/ansible/kubeadmFile2 |tail -f |grep "discovery-token-ca-cert-hash"  
+  shell: cat "{{ kubeadmExit.stdout_lines }}" |tail -f |grep "discovery-token-ca-cert-hash"  
   register: kubeadmExit2
 
 
