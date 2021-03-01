@@ -12,8 +12,14 @@
    - 10250/tcp
    - 30000-32767/tcp
 
+- name: Creating a file with content
+  copy:
+    dest: "/home/ansible/token2.txt"
+    content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
+  become: yes
+
 - name: Echo the output kubeadmExit variable vaule 
-  shell: cat {{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }} | tail -f
+  shell: cat "/home/ansible/token2.txt"
   register: kubeadmExit2
 
 - debug: msg="{{kubeadmExit2.stdout}}"
