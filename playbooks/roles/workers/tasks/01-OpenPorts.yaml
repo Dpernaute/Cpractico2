@@ -13,7 +13,7 @@
    - 30000-32767/tcp
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: sed -i  /home/ansible/kubeadmFile "s/^ *//; s/ *$//; /^$/d; /^\s*$/d; s/^\t*//; s/\t*$//;""
+  shell: sed -i  "s/^ *//; s/ *$//; /^$/d; /^\s*$/d; s/^\t*//; s/\t*$//;" /home/ansible/kubeadmFile
   become: yes
 
 - name: Echo the output kubeadmExit variable vaule last line
