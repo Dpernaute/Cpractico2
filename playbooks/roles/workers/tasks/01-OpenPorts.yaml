@@ -12,25 +12,17 @@
    - 10250/tcp
    - 30000-32767/tcp
 
-
 - name: Echo the output kubeadmExit variable vaule last line
   shell: cat /home/ansible/kubeadmFile
   register: kubeadmExit
 
-- debug: msg="{{kubeadmExit}}"
-
-- name: Creating a file with content
-  copy:
-    dest: "/home/ansible/kubeadmFile2"
-    content: "{{ kubeadmExit.stdout_lines }}"
-  become: yes
+- debug: msg="{{kubeadmExit.stdout_lines}}"
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat {{ kubeadmExit.stdout_lines }} |tail -3
+  shell: cat {{ kubeadmExit.stdout_lines }} |tail -2
   register: kubeadmExit2
 
-
-- debug: msg="{{kubeadmExit2.stdout}}"
+- debug: msg="{{kubeadmExit2.stdout_lines}}"
 
 # Reload config.
 - name: reload
