@@ -26,7 +26,7 @@
 
 # Reload config.
 - name: reload
-  command: "{{kubeadmExit2.stdout}}"
+  command: "{{kubeadmExit2.stdout}} --v=5"
   become: yes
 
 - lineinfile:
