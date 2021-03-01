@@ -132,9 +132,9 @@
   replace:
     path:  "/home/ansible/token.txt"
     regexp: "{{ item }}"
-    replace: " "
+    replace: "  "
   with_items:
-    - "\"
+    - "\\"
     - "\n"
   become: yes
 
