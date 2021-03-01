@@ -12,16 +12,12 @@
    - 10250/tcp
    - 30000-32767/tcp
 
-- name: Creating an empty file
-  file:
-    path: "/home/ansible/kubeadmFile"
-    state: touch
-  become: yes
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: sed -i  "s/^ *//; s/ *$//; /^$/d; /^\s*$/d; s/^\t*//; s/\t*$//;" /home/ansible/kubeadmFile
-  become: yes
+  shell: cat {{ kubeadmExit.stdout_lines }}
   register: kubeadmExit
+
+- debug: msg="{{kubeadmExit.stdout}}"
 
 - name: Creating a file with content
   copy:
@@ -30,7 +26,7 @@
   become: yes
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat "{{ kubeadmExit.stdout_lines }}" |tail -f |grep "discovery-token-ca-cert-hash"  
+  shell: cat {{ kubeadmExit.stdout_lines }} |tail -f |grep "discovery-token-ca-cert-hash"  
   register: kubeadmExit2
 
 
