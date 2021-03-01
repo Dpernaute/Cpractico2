@@ -116,6 +116,13 @@
   shell: cat /home/ansible/kubeadmFile.txt |tail -2
   register: kubeadmExit
 
+- name: Ansible replace string 
+  replace:
+    path: "{{ kubeadmExit.stdout }}"
+    regexp: '\\\n'
+    replace: ""
+  become: yes
+    
 - debug: msg="{{kubeadmExit.stdout}}"
 
 - name: Register dummy host with variable
