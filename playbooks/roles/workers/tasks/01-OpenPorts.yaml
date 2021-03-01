@@ -14,7 +14,7 @@
 
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat /home/ansible/kubeadmFile |tail -f | grep '--discovery-token-ca-cert-hash '
+  shell: cat /home/ansible/kubeadmFile |tail -f | grep 'discovery-token-ca-cert-hash'
   register: kubeadmExit2
 
 - debug: msg="{{kubeadmExit2.stdout}}"
