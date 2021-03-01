@@ -134,7 +134,7 @@
     regexp: "{{ item }}"
     replace: "  "
   with_items:
-    - "\\"
+    - "\ "
     - "\n"
   become: yes
 
