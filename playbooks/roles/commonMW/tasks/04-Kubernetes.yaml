@@ -116,12 +116,25 @@
   shell: cat /home/ansible/kubeadmFile.txt |tail -2
   register: kubeadmExit
 
+- name: Creating an empty file
+  file:
+    path: "/home/ansible/token.txt"
+    state: touch
+  become: yes
+
+- name: Creating a file with content
+  copy:
+    dest: "/home/ansible/token.txt"
+    content: "{{ kubeadmExit.stdout }}"
+  become: yes
+
 - name: Ansible replace string 
   replace:
-    path: {{ kubeadmExit.stdout }}
+    path:  "/home/ansible/token.txt"
     regexp: '\\\n'
     replace: " "
   become: yes
+  register: kubeadmExit
     
 - debug: msg="{{kubeadmExit.stdout}}"
 
