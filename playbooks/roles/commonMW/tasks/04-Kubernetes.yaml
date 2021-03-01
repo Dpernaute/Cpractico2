@@ -131,7 +131,7 @@
 - name: Ansible replace string 
   replace:
     path:  "/home/ansible/token.txt"
-    regexp: '\\\n'
+    regexp: "\\\n"
     replace: " "
   become: yes
   register: kubeadmExit
