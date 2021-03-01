@@ -12,6 +12,13 @@
    - 10250/tcp
    - 30000-32767/tcp
 
+- name: deleting blank spaces of file
+ command: "sed -i 's/^ *//; s/ *$//; /^\s*$/d; s/^\t*//; s/\t*$//;' /home/ansible/kubeadmFile"
+ become: yes
+ 
+- name: Echo the output kubeadmExit variable vaule last line
+  shell: cat /home/ansible/kubeadmFile
+  
 
 - name: Echo the output kubeadmExit variable vaule last line
   shell: cat /home/ansible/kubeadmFile |tail -f | grep 'discovery-token-ca-cert-hash'
