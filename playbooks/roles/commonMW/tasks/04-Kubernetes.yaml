@@ -109,7 +109,7 @@
 - name: Creating a file with content
   copy:
     dest: "/home/ansible/kubeadmFile"
-    content: "{{ kubeadmExit.stdout_lines }}"
+    content: "{{ kubeadmExit.stdout }}"
   become: yes
 
 # Allow root user to acces into the cluster
