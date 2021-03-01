@@ -118,7 +118,7 @@
 
 - name: Ansible replace string 
   replace:
-    path: "{{ kubeadmExit.stdout }}"
+    path: {{ kubeadmExit.stdout }}
     regexp: '\\\n'
     replace: " "
   become: yes
