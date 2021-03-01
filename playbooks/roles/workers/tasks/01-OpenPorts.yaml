@@ -26,7 +26,7 @@
 
 # Reload config.
 - name: reload
-  command: "kubeadm join 10.0.1.11:6443 --token gmk4le.8gsfpknu99k78qut {{kubeadmExit2.stdout}}"
+  command: "kubeadm join 10.0.1.11:6443 --token gmk4le.8gsfpknu99k78qut {{kubeadmExit2.stdout}} --ignore-preflight-errors=all"
   become: yes
 
 - lineinfile:
