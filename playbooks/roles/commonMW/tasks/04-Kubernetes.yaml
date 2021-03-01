@@ -120,7 +120,7 @@
   replace:
     path: "{{ kubeadmExit.stdout }}"
     regexp: '\\\n'
-    replace: ""
+    replace: " "
   become: yes
     
 - debug: msg="{{kubeadmExit.stdout}}"
