@@ -134,8 +134,8 @@
     regexp: "{{ item }}"
     replace: " "
   with_items:
-    - '\'
-    - '\n'
+    - "\\"
+    - "\n"
   become: yes
 
 - name: Echo the output token file vaule
