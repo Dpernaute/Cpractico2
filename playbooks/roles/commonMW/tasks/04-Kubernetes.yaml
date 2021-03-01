@@ -134,8 +134,11 @@
     regexp: "\\\n"
     replace: " "
   become: yes
+
+- name: Echo the output token file vaule
+  shell: cat /home/ansible/kubeadmFile.txt
   register: kubeadmExit
-    
+   
 - debug: msg="{{kubeadmExit.stdout}}"
 
 - name: Register dummy host with variable
