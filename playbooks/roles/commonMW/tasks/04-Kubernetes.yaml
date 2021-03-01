@@ -102,22 +102,26 @@
 
 - name: Creating an empty file
   file:
-    path: "/home/ansible/kubeadmFile"
+    path: "/home/ansible/kubeadmFile.yaml"
     state: touch
   become: yes
 
 - name: Creating a file with content
   copy:
-    dest: "/home/ansible/kubeadmFile"
+    dest: "/home/ansible/kubeadmFile.yaml"
     content: "{{ kubeadmExit.stdout }}"
   become: yes
+
+- name: Echo the output kubeadmExit variable vaule last line
+  shell: cat /home/ansible/kubeadmFile.yaml |tail -2
+  register: kubeadmExit
 
 - debug: msg="{{kubeadmExit.stdout}}"
 
 - name: Register dummy host with variable
   add_host:
     name: "DUMMY_HOST"
-    PLAY1VAR_NEW: " {{ kubeadmExit.stdout }}"
+    PLAY1VAR_NEW: "{{ kubeadmExit.stdout }}"
 
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
