@@ -112,6 +112,13 @@
     content: "{{ kubeadmExit.stdout }}"
   become: yes
 
+- debug: msg="{{PLAY1VAR.stdout}}"
+
+   - name: Register dummy host with variable
+     add_host:
+       name: "DUMMY_HOST"
+       PLAY1VAR_NEW: " {{ kubeadmExit.stdout }}"
+
 # Allow root user to acces into the cluster
 - name: create a directory if it does not exist
   file:
