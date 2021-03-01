@@ -12,12 +12,9 @@
    - 10250/tcp
    - 30000-32767/tcp
 
-- name: Echo the output kubeadmFile
-  shell: cat /home/ansible/kubeadmFile
-
 
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat /home/ansible/kubeadmFile |tail -1
+  shell: cat /home/ansible/kubeadmFile |tail -f | grep '--discovery-token-ca-cert-hash '
   register: kubeadmExit2
 
 - debug: msg="{{kubeadmExit2.stdout}}"
