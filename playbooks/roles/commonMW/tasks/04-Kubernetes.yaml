@@ -132,10 +132,10 @@
   replace:
     path:  "/home/ansible/token.txt"
     regexp: "{{ item }}"
-    replace: "  "
+    replace: " "
   with_items:
-    - "\ "
-    - "\n"
+    - " \ "
+    - "\n    "
   become: yes
 
 - name: Echo the output token file vaule

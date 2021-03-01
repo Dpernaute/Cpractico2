@@ -13,7 +13,7 @@
    - 30000-32767/tcp
 
 - name: Echo the output kubeadmExit variable vaule 
-  shell: cat {{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}
+  shell: cat {{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }} |tail -3
   register: kubeadmExit2
 
 - debug: msg="{{kubeadmExit2.stdout}}"
