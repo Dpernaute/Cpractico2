@@ -15,7 +15,6 @@
 - name: Add user
   user:
     name: kubeadmin
-    sudo: ALL=(ALL) NOPASSWD:ALL
     password:  "{{ password_sha512.stdout }}"
   become: yes
 
