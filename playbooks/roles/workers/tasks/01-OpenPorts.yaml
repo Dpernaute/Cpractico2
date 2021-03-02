@@ -25,7 +25,7 @@
   become: yes
 
 - name: Echo the output token file vaule
-  shell: cat /home/ansible/token2.sh | sed 's/\\n//g'
+  shell: sed 's/\\n//g' /home/ansible/token2.sh 
   register: kubeadmExit
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
