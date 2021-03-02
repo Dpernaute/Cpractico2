@@ -2,7 +2,7 @@
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=ansible
-ansible_sudo_pass=DiegoPractica2@#
+ansible_sudo_pass=Dpractica2@#
 var=PLAY1VAR_NEW
 
 [master]
