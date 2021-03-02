@@ -16,7 +16,7 @@
 - name: restarting up docker config
   systemd:
     name: docker
-    state: reloaded
+    state: restarted
     force: yes
     enabled: yes
     masked: no
@@ -34,7 +34,11 @@
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
 
-- name: images config
+- name: kubeadm reset
+  command: "kubeadm reset -f"
+  become: yes
+
+- name: Kubeadm join
   command: "{{kubeadmExit.stdout}} --ignore-preflight-errors=all"
   become: yes
 
