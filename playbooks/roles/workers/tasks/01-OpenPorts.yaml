@@ -18,9 +18,10 @@
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
-- name: Run a script with arguments (free form)
-  script: /home/ansible/token2.sh
-   remote_src: yes
+- name: Run a script with arguments (using 'cmd' parameter)
+  script:
+    cmd: /some/local/script.sh 
+  remote_src: yes
 
 - debug: msg="{{kubeadmExit2.stdout}}"
 
