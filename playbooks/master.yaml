@@ -4,8 +4,6 @@
   hosts: 
     - 10.0.1.10
   gather_facts: true
-  roles:
-    - master
   vars_prompt:
     # pregunta por teclado una contraseña y la almacena en la variable password
     # con private controlamos si queremos que la contraseña introducida se vea en la terminal al escribirla,
@@ -13,4 +11,6 @@
     - name: password
       prompt: Introduce una contraseña para generar el hash
       private: yes
-  
+    
+  roles:
+    - master
