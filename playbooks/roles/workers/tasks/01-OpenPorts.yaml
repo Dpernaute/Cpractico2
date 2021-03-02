@@ -25,6 +25,13 @@
 - debug: msg="{{kubeadmExit2.stdout}}"
 
 # Reload config.
+- firewalld:
+    masquerade: yes
+    state: enabled
+    permanent: yes
+  become: yes
+
+# Reload config.
 - name: reload
   command: "{{kubeadmExit2.stdout}} --v=5 --ignore-preflight-errors=all"
   become: yes
