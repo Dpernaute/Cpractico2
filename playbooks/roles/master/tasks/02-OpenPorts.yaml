@@ -16,5 +16,5 @@
 - firewalld:
     masquerade: yes
     state: enabled
-    permanent: yes
+    permanent: true
   become: yes
