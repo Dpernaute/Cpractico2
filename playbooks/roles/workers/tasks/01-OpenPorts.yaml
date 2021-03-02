@@ -33,7 +33,7 @@
 
 # Reload config.
 - name: reload
-  command: "/home/ansible/token2.sh"
+  command: /home/ansible/token2.sh
   become: yes
 
 - lineinfile:
