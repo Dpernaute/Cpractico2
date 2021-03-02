@@ -21,11 +21,11 @@
 - name: Ansible replace string 
   replace:
     path:  "/home/ansible/token.txt"
-    regexp: "{\}"
+    regexp: "\\"
   become: yes
 
 - name: Echo the output token file vaule
-  shell: cat /home/ansible/token2.sh
+  shell: cat /home/ansible/token2.sh | sed 's/\\n//g'
   register: kubeadmExit
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
