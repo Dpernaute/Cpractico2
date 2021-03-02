@@ -11,7 +11,6 @@
     url: https://docs.projectcalico.org/manifests/custom-resources.yaml
     dest: /tmp/
     force: yes
-    mode: '0440'
   become: yes
 
 - name: Replace cidr entry with POD IP
