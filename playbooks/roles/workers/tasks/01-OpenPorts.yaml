@@ -16,7 +16,8 @@
 - name: restarting up docker config
   systemd:
     name: docker
-    state: restarted
+    state: reloaded
+    force: yes
     enabled: yes
     masked: no
   become: yes
