@@ -9,14 +9,14 @@
 - name: Download foo.conf
   get_url:
     url: https://docs.projectcalico.org/manifests/custom-resources.yaml
-    dest: /var/tmp
+    dest: /tmp
     force: yes
     mode: '0440'
   become: yes
 
 - name: Replace cidr entry with POD IP
   lineinfile:
-    path: /var/tmp/custom-resources.yaml
+    path: /tmp/custom-resources.yaml
     regexp: '^(.*)cidr:(.*)'
     line: '      cidr: 10.1.1.0/16'
     owner: root
