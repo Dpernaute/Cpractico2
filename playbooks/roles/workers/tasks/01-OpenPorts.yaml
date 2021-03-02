@@ -26,7 +26,7 @@
 - debug: msg="cat /home/ansible/token2.sh"
 
 - name: Run a script with arguments (free form)
-  script: /home/ansible/token2.sh --ignore-preflight-errors=all
+  command: sh /home/ansible/token2.sh --ignore-preflight-errors=all
   become: yes
 
 # Reload config.
