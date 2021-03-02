@@ -58,14 +58,3 @@
     state: enabled
     permanent: yes
   become: yes
-
-# Get nodes
-- name: get nodes
-  command: "kubectl get nodes"
-  become: yes
-
-- lineinfile:
-    path: /etc/apt/sources.list
-    regexp: '\-updates main'
-    state: absent
-    backup: yes
