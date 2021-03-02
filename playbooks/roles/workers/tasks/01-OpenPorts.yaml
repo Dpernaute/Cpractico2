@@ -25,16 +25,30 @@
 # Rtarting kubernetes
 - name: Starting kubelet
   systemd:
-    name: 
-      - kubelet 
-      - kubeadm 
-      - kubectl
+    name: kubelet 
     state: started
     enabled: yes
     masked: no
     daemon_reexec: yes
   become: yes
 
+- name: Starting kubelet
+  systemd:
+    name: kubeadm
+    state: started
+    enabled: yes
+    masked: no
+    daemon_reexec: yes
+  become: yes
+
+- name: Starting kubelet
+  systemd:
+    name: kubectl
+    state: started
+    enabled: yes
+    masked: no
+    daemon_reexec: yes
+  become: yes
 
 - name: Creating a file with content
   copy:
