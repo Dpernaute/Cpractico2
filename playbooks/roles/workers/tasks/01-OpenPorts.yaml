@@ -13,10 +13,10 @@
    - 30000-32767/tcp
 
 # Starting docker
-- name: starting up docker config
+- name: restarting up docker config
   systemd:
     name: docker
-    state: started
+    state: restarted
     enabled: yes
     masked: no
   become: yes
