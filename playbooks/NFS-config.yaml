@@ -4,4 +4,4 @@
   hosts: 10.0.1.13
   gather_facts: true
   roles:
-    - workers
+    - NFS-config
