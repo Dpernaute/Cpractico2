@@ -4,4 +4,3 @@
 - include_tasks: 02-Install.yaml
 - include_tasks: 03-Docker.yaml
 - include_tasks: 04-Kubernetes.yaml
-- include_tasks: 05-SDN.yaml
