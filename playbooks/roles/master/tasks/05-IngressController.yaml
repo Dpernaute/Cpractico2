@@ -5,6 +5,24 @@
    command: "kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml"
    become: yes
 
+# Generating hash password
+# generate a random value for use it as salt and then save in to a variable
+# with delegate_to the task is executed locally
+- name: enerate a random value for use it as salt for generate the password
+  command: /usr/bin/openssl rand -base64 32
+  register: random_pass
+  
+
+- name: make the hash (sha512)
+  command: "/usr/bin/openssl passwd -6 -salt {{ random_pass.stdout }} {{ password }}"
+  register: password_sha512
+
+- name: Add user
+  user:
+    name: kubeadmin
+    password:  "{{ password_sha512.stdout }}"
+  become: yes
+  
 # Allow kubeadmin user to acces into the cluster
 - name: create a directory if it does not exist
   file:
