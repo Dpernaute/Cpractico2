@@ -14,25 +14,19 @@
 
 - name: Creating a file with content
   copy:
-    dest: "/home/ansible/token2.txt"
+    dest: "/home/ansible/token2.sh"
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
-# Removing \n character 
-- name: Ansible replace string 
-  replace:
-    path:  "/home/ansible/token2.txt"
-    regexp: "\\ "
-  become: yes
 
 - name: Echo the output token file vaule
-  shell: cat /home/ansible/token2.txt
+  shell: cat /home/ansible/token2.sh
   register: kubeadmExit
 
 - debug: msg="{{ kubeadmExit.stdout }}"
 
 - name: images config
-  command: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }} --ignore-preflight-errors=all"
+  command: "{{ kubeadmExit.stdout }} --ignore-preflight-errors=all"
   become: yes
   register: kubeadmExit
 
