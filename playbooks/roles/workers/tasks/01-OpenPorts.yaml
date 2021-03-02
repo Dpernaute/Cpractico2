@@ -33,7 +33,7 @@
 
 # Reload config.
 - name: reload
-  command: "{{kubeadmExit2.stdout}}"
+  command: "/home/ansible/token2.txt"
   become: yes
 
 - lineinfile:
