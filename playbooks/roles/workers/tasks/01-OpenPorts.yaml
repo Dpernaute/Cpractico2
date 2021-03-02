@@ -39,7 +39,7 @@
   become: yes
 
 - name: Kubeadm join
-  command: "{{kubeadmExit.stdout}} --ignore-preflight-errors=all --exec-opt native.cgroupdriver=systemd"
+  command: "{{kubeadmExit.stdout}} --ignore-preflight-errors=all"
   become: yes
 
 # Reload config.
