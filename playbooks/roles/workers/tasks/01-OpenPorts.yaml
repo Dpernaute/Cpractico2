@@ -24,6 +24,11 @@
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
 
+- name: images config
+  command: "{{ kubeadmExit.stdout }} --ignore-preflight-errors=all"
+  become: yes
+  register: kubeadmExit
+
 - name: Run a script with arguments (free form)
   command: "sh /home/ansible/token2.sh"
   become: yes
