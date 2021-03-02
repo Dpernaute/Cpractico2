@@ -9,7 +9,7 @@
 - name: Download foo.conf
   get_url:
     url: https://docs.projectcalico.org/manifests/custom-resources.yaml
-    dest: /tmp
+    dest: /tmp/
     force: yes
     mode: '0440'
   become: yes
@@ -26,5 +26,5 @@
 
 # Installing Calico.
 - name: Installing Calico
-  command: "kubectl apply -i /tmp/custom-resources.yaml"
+  command: "kubectl apply -f /tmp/custom-resources.yaml"
   become: yes
