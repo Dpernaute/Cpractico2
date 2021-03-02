@@ -18,7 +18,15 @@
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
-- debug: msg="{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
+# Removing \n character 
+- name: Ansible replace string 
+  replace:
+    path:  "/home/ansible/token2.sh"
+    regexp: "\ "
+  become: yes
+  register: kubeadmExit
+
+- debug: msg="{{ kubeadmExit.stdout }}"
 
 - name: images config
   command: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }} --ignore-preflight-errors=all"
