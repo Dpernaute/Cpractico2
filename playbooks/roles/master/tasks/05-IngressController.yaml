@@ -5,12 +5,6 @@
    command: "kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml"
    become: yes
 
-- name: Add the user 'kubeadmin' with a specific uid and a primary group of 'admin'
-  user:
-    name: kubeadmin
-    sudo: ALL=(ALL) NOPASSWD:ALL
-
-
 # Allow kubeadmin user to acces into the cluster
 - name: create a directory if it does not exist
   file:
