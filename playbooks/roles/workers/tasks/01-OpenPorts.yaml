@@ -12,6 +12,15 @@
    - 10250/tcp
    - 30000-32767/tcp
 
+# Starting docker
+- name: starting up docker config
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+    masked: no
+  become: yes
+
 - name: Creating a file with content
   copy:
     dest: "/home/ansible/token2.sh"
