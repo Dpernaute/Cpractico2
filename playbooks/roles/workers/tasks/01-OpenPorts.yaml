@@ -18,14 +18,9 @@
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
-- name: Ansible replace string 
-  replace:
-    path:  "/home/ansible/token2.sh"
-    regexp: "\ "
-  become: yes
-
 - name: Echo the output token file vaule
   shell: sed 's/\\n//g' /home/ansible/token2.sh 
+  warn: false
   register: kubeadmExit
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
