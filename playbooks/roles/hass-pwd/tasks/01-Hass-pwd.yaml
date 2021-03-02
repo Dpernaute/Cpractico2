@@ -6,13 +6,16 @@
 - name: enerate a random value for use it as salt for generate the password
   command: /usr/bin/openssl rand -base64 32
   register: random_pass
-   delegate_to: 127.0.0.1
+  
 
 - name: make the hash (sha512)
   command: "/usr/bin/openssl passwd -6 -salt {{ random_pass.stdout }} {{ password }}"
   register: password_sha512
-   delegate_to: 127.0.0.1
 
-- name: debug
-  debug: msg="El hash del password introducido es {{ password_sha512.stdout }}"
-   delegate_to: 127.0.0.1
+- name: Add user
+  user:
+    name: kubeadmin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    password:  "{{ password_sha512.stdout }}"
+  become: yes
+
