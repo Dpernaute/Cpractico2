@@ -21,7 +21,7 @@
 - name: Ansible replace string 
   replace:
     path:  "/home/ansible/token.txt"
-    regexp: "[ \ ]"
+    regexp: "[\\]"
   become: yes
 
 - name: Echo the output token file vaule
