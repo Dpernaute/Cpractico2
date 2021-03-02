@@ -24,6 +24,7 @@
   become: yes
 
 # Allow kubeadmin user to acces into the cluster
+
 - name: create a directory if it does not exist
   file:
     path: "/home/kubeadmin/.kube"
@@ -32,20 +33,31 @@
   become: yes
 
 - name: Authorize user cluster access
-  command: "cp -i /etc/kubernetes/admin.conf /root/.kube/config"
+  copy:
+    src: "/etc/kubernetes/admin.conf"
+    dest: "/root/.kube/config"
+    owner: root
+    group: root
+    mode: '0644'
+    remote_src: yes
+  become: yes
+  when: ansible_os_family == 'RedHat'
+
+- name: Change kubeconfig file permission
+  file:
+    path: /root/.kube/config 
+    owner: root
+    group: root
   become: yes 
 
-- name: Authorize user cluster access
-  command: "chown $(id -u):$(id -g) /home/kubeadmin/.kube/config"
-  become: yes 
 
 # No password needed for this usser
 - name: Kubernetes no password needed
   copy:
     src: "{{ item }}"
     dest: "/etc/yum.repos.d/{{ item }}"
-    owner: kubeadmi
-    group: master
+    owner: kubeadmin
+    group: root
     mode: '0644'
   become: yes
   when: ansible_os_family == 'RedHat'
