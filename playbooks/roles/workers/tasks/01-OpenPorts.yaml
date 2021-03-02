@@ -18,9 +18,8 @@
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
-- name: Echo the output kubeadmExit variable vaule 
-  shell: cat "/home/ansible/token2.sh"
-  register: kubeadmExit2
+- name: Run a script with arguments (free form)
+  script: /home/ansible/token2.sh
 
 - debug: msg="{{kubeadmExit2.stdout}}"
 
