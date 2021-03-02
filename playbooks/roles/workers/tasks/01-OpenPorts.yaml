@@ -18,6 +18,11 @@
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
+- name: Ansible replace string 
+  replace:
+    path:  "/home/ansible/token.txt"
+    regexp: "\ "
+  become: yes
 
 - name: Echo the output token file vaule
   shell: cat /home/ansible/token2.sh
