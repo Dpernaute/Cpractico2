@@ -18,6 +18,11 @@
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
+- name: images config
+  command: ""{{kubeadmExit2.stdout}}" --ignore-preflight-errors=all"
+  become: yes
+  register: kubeadmExit
+
 - name: Run a script with arguments (using 'cmd' parameter)
   script:
     cmd: /home/ansible/token2.sh
