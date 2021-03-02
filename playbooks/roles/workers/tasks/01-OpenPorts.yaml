@@ -25,12 +25,7 @@
 - debug: msg=" {{ kubeadmExit.stdout }}"
 
 - name: images config
-  command: "{{ kubeadmExit.stdout }} --v=5"
-  become: yes
-  register: kubeadmExit
-
-- name: Run a script with arguments (free form)
-  command: "sh /home/ansible/token2.sh"
+  command: "{{kubeadmExit.stdout}} --ignore-preflight-errors=all"
   become: yes
 
 # Reload config.
@@ -40,9 +35,9 @@
     permanent: yes
   become: yes
 
-# Reload config.
-- name: reload
-  command: /home/ansible/token2.sh
+# Get nodes
+- name: get nodes
+  command: kubectl get nodes
   become: yes
 
 - lineinfile:
