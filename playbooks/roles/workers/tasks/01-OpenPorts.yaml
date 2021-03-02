@@ -23,7 +23,7 @@
   shell: cat /home/ansible/token2.sh
   register: kubeadmExit
 
-- debug: msg="{{ kubeadmExit.stdout }}"
+- debug: msg="cat /home/ansible/token2.sh"
 
 - name: Run a script with arguments (free form)
   script: /home/ansible/token2.sh --ignore-preflight-errors=all
