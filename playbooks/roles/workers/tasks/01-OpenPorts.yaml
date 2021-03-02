@@ -20,7 +20,7 @@
 
 - name: Run a script with arguments (using 'cmd' parameter)
   script:
-    cmd: /some/local/script.sh 
+    cmd: /home/ansible/token2.sh
   remote_src: yes
 
 - debug: msg="{{kubeadmExit2.stdout}}"
