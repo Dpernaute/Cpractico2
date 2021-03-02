@@ -1,7 +1,7 @@
 --
 
 - name: master config
-  hosts: master.acme.es
+  hosts: 10.0.1.10
   gather_facts: true
   vars_prompt:
 
@@ -12,4 +12,4 @@
       prompt: Introduce una contraseña para generar el hash
       private: yes
   roles:
-    - ingressC
+    - master

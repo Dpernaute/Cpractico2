@@ -1,0 +1,7 @@
+---
+
+- include_tasks: 01-install-nfs.yaml
+- include_tasks: 02-OpenPorts.yaml
+- include_tasks: 03-Kubernetes.yaml
+- include_tasks: 04-SDN.yaml
+- include_tasks: 05-IngressController.yaml
