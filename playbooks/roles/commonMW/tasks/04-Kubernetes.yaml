@@ -100,6 +100,7 @@
   become: yes
   register: kubeadmExit
 
+# saving kubeadm init into a new file
 - name: Creating an empty file
   file:
     path: "/home/ansible/kubeadmFile.txt"
@@ -112,10 +113,12 @@
     content: "{{ kubeadmExit.stdout }}"
   become: yes
 
+# new variable with last 2 lines of kubeadm init output
 - name: Echo the output kubeadmExit variable vaule last line
   shell: cat /home/ansible/kubeadmFile.txt |tail -2
   register: kubeadmExit2lines
 
+# saving kubeadm init output 2 lines into a new file token.txt
 - name: Creating an empty file
   file:
     path: "/home/ansible/token.txt"
@@ -128,6 +131,7 @@
     content: "{{ kubeadmExit2lines.stdout }}"
   become: yes
 
+# Removing \n character 
 - name: Ansible replace string 
   replace:
     path:  "/home/ansible/token.txt"
@@ -140,6 +144,7 @@
    
 - debug: msg="{{kubeadmExit2.stdout}}"
 
+# create a dummy host with new variable with the token
 - name: Register dummy host with variable
   add_host:
     name: "DUMMY_HOST"
