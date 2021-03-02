@@ -1,4 +1,4 @@
---
+---
 
 - name: master config
   hosts: 10.0.1.10
