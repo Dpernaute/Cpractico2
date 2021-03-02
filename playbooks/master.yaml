@@ -8,9 +8,9 @@
     # pregunta por teclado una contraseña y la almacena en la variable password
     # con private controlamos si queremos que la contraseña introducida se vea en la terminal al escribirla,
     # con esta configuración no se verá
-    - name: password
-      prompt: Introduce una contraseña para generar el hash
-      private: yes
+   - name: password
+    prompt: Introduce una contraseña para generar el hash
+    private: yes
     
   roles:
     - master
