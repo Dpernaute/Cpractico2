@@ -18,12 +18,12 @@
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
+- debug: msg="{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
+
 - name: images config
   command: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }} --ignore-preflight-errors=all"
   become: yes
   register: kubeadmExit
-
-- debug: msg="{{kubeadmExit2.stdout}}"
 
 # Reload config.
 - firewalld:
