@@ -25,7 +25,7 @@
 - debug: msg=" {{ kubeadmExit.stdout }}"
 
 - name: images config
-  command: "{{ kubeadmExit.stdout }} -f --v=5"
+  command: "{{ kubeadmExit.stdout }} --v=5"
   become: yes
   register: kubeadmExit
 
