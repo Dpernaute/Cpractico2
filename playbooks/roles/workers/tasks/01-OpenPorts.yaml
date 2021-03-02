@@ -61,7 +61,7 @@
 
 # Get nodes
 - name: get nodes
-  command: kubectl get nodes
+  command: "kubectl get nodes"
   become: yes
 
 - lineinfile:
