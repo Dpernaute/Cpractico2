@@ -49,7 +49,7 @@
   become: yes
 
 - name: Kubeadm join
-  command: "{{kubeadmExit.stdout}} --dry-run=client -o yaml"
+  command: "{{kubeadmExit.stdout}} --ignore-preflight-errors=all"
   become: yes
 
 # Reload config.
