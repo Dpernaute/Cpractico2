@@ -20,4 +20,6 @@
    - 10251/tcp
    - 10252/tcp
    - 10255/tcp
+   - 8285/udp
+   - 8472/udp
   become: yes
