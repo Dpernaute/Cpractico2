@@ -44,8 +44,8 @@
 
 
 #export -f command
-- name: make the hash (sha512)
-  command: "exportfs -s"
+- name: share nfs folder with all hosts
+  command: "exportfs -r"
   become: yes
 
 
