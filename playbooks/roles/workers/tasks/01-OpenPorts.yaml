@@ -12,26 +12,6 @@
    - 10250/tcp
    - 30000-32767/tcp
 
-# Starting docker
-- name: restarting up docker config
-  systemd:
-    name: docker
-    state: restarted
-    force: yes
-    enabled: yes
-    masked: no
-  become: yes
-
-# Rtarting kubernetes
-- name: Starting kubelet
-  systemd:
-    name: kubelet 
-    state: started
-    enabled: yes
-    masked: no
-    daemon_reexec: yes
-  become: yes
-
 - name: Creating a file with content
   copy:
     dest: "/home/ansible/token2.sh"
