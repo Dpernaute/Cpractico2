@@ -30,6 +30,25 @@
   with_items:
       - "exports"
 
+# Creating /srv/nfs directory
+- name: create a directory if it does not exist
+  file:
+    path: "/srv/nfs"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  become: yes
+
+#giving root permissions to the folder
+
+
+#export -f command
+- name: make the hash (sha512)
+  command: "exportfs -s"
+  become: yes
+
+
 # opening firewall ports
 - name: Opening ports
   firewalld:
