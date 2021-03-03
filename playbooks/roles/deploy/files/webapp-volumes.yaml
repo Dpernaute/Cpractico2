@@ -16,7 +16,7 @@ spec:
         app: webapp-volumes
     spec:
       containers:
-      - name: 2048-game
+      - name: webapp-volumes
         image: docker.io/alexwhen/docker-2048:latest
         ports:
         - containerPort: 80
