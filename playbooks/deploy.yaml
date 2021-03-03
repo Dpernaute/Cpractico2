@@ -4,7 +4,7 @@
   hosts: 
     - 10.0.1.10
   gather_facts: true
-  ansible_user: kubeadmin
-  ansible_sudo_pass: Practica2
+  remote_user: kubeadmin
+  remote_password: Practica2
   roles:
     - deploy
