@@ -29,22 +29,22 @@
   become: yes
 
 # creating a namespace
-- name: Create a namespace
-  command: "kubectl create namespace  webapp-volumes"
-  become: yes
+#- name: Create a namespace
+#  command: "kubectl create namespace  webapp-volumes"
+#  become: yes
 
 #Define persistent volume
 - name: Persistent volume
   command: "kubectl apply -f /web-app/nfs-pv.yaml --dry-run=client -o yaml"
-  become: yes
+  become: no
 
  #Creating claim to assign to the PODs.
 - name: Claim 
   command: "kubectl apply -f /web-app/nfs-pvc.yaml --dry-run=client -o yaml"
-  become: yes
+  become: no
 
 #Deployment.
 - name: Deployment
   command: "kubectl apply -f /web-app/webapp-volumes.yaml --dry-run=client -o yaml"
-  become: yes
+  become: no
 
