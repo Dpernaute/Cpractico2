@@ -23,6 +23,11 @@
       - "nfs-pvc.yaml"
       - "webapp-volumes.yaml"
 
+# Deleting a namespace webapp-volumes
+- name: Delete namespace
+  command: "kubectl delete namespace -f webapp-volumes"
+  become: yes
+
 # creating a namespace
 - name: Create a namespace
   command: "kubectl create namespace -f webapp-volumes"
