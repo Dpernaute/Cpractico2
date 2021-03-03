@@ -1,7 +1,7 @@
 ---
 
 # opening worker ports
-- name: firewall configuration1 for master
+- name: firewall configuration1 for workers
   firewalld:
     port: "{{ item }}"
     zone: public

@@ -1,26 +1,5 @@
 ---
 
-# Reload config.
-- firewalld:
-    masquerade: yes
-    state: enabled
-    permanent: yes
-  become: yes
-
-# Firewall config in order to access kubernetes services.
-- name: Opening ports
-  firewalld: 
-    port: "{{ item }}"
-    permanent: yes
-    state: enabled
-  with_items:
-   - 6443/tcp
-   - 2379-2380/tcp
-   - 10250/tcp
-   - 10251/tcp
-   - 10252/tcp
-   - 10255/tcp
-  become: yes
 
 # Kubeadm configure.
 - name: images config
