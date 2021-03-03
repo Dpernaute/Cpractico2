@@ -25,7 +25,7 @@
 
 # Deleting a namespace webapp-volumes
 - name: Delete namespace
-  command: "kubectl delete namespace -f webapp-volumes"
+  command: "kubectl delete namespace webapp-volumes"
   become: yes
 
 # creating a namespace
