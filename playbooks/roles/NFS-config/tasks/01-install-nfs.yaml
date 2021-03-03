@@ -30,3 +30,21 @@
   with_items:
       - "exports"
 
+# opening firewall ports
+- name: Opening ports
+  firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items:
+   - nfs
+   - rpc-bind
+   - mountd
+  become: yes
+
+ # Reload config.
+- firewalld:
+    masquerade: yes
+    state: enabled
+    permanent: true
+  become: yes

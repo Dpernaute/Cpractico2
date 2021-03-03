@@ -1,0 +1,37 @@
+---
+
+# copy nfs files content into /etc/exports
+- name: copy nfs files to /web-app/
+  copy:
+    src: "{{ item }}"
+    dest: "/web-app/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  when: ansible_os_family == 'RedHat'
+  with_items:
+      - "nfs-pv.yaml"
+      - "nfs-pvc.yaml"
+      - "webapp-volumes.yaml"
+
+# creating a namespace
+- name: Create a namespace
+  command: "kubectl create namespace webapp-volumes"
+  become: yes
+
+#Define persistent volume
+- name: Persistent volume
+  command: "kubectl apply -f kubectl apply -f /web-app/nfs-pv.yaml"
+  become: yes
+
+ #Creating claim to assign to the PODs.
+- name: Claim 
+  command: "kubectl apply -f kubectl apply -f /web-app/nfs-pvc.yaml"
+  become: yes
+
+#Deployment.
+- name: Deployment
+  command: "kubectl apply -f /web-app/webapp-volumes.yaml"
+  become: yes
+

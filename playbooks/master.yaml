@@ -9,7 +9,7 @@
     # con private controlamos si queremos que la contraseña introducida se vea en la terminal al escribirla,
     # con esta configuración no se verá
     - name: password
-      prompt: Introduce una contraseña para generar el hash
+      prompt: Introduce una contraseña para generar el usuario kubeadmin
       private: yes
 
   roles:
