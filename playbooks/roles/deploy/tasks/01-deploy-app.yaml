@@ -1,5 +1,13 @@
 ---
 
+#create a directory
+- name: Create a directory if it does not exist
+  file:
+    path: /web-app
+    state: directory
+    mode: '0755'
+  become: yes
+
 # copy nfs files content into /etc/exports
 - name: copy nfs files to /web-app/
   copy:
@@ -18,14 +26,6 @@
 # creating a namespace
 - name: Create a namespace
   command: "kubectl create namespace webapp-volumes"
-  become: yes
-
-#create a directory
-- name: Create a directory if it does not exist
-  file:
-    path: /web-app
-    state: directory
-    mode: '0755'
   become: yes
 
 #Define persistent volume
