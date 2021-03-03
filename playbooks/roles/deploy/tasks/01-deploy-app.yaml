@@ -36,15 +36,15 @@
 #Define persistent volume
 - name: Persistent volume
   command: "kubectl apply -f /web-app/nfs-pv.yaml --dry-run=client -o yaml"
-  become: no
+  become: yes
 
  #Creating claim to assign to the PODs.
 - name: Claim 
   command: "kubectl apply -f /web-app/nfs-pvc.yaml --dry-run=client -o yaml"
-  become: no
+  become: yes
 
 #Deployment.
 - name: Deployment
   command: "kubectl apply -f /web-app/webapp-volumes.yaml --dry-run=client -o yaml"
-  become: no
+  become: yes
 
