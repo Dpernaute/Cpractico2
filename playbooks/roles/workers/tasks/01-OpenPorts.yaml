@@ -26,6 +26,10 @@
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
 
+- name: kubeadm reset
+  command: "kubeadm reset -f"
+  become: yes
+
 - name: Kubeadm join
   command: "{{kubeadmExit.stdout}} --ignore-preflight-errors=all"
   become: yes
