@@ -34,7 +34,7 @@
 - name:
   firewalld:
     zone: public
-    rich_rule: rule family=ipv4 source address=172.17.0.0/1 accept
+    rich_rule: rule family=ipv4 source address=172.17.0.0/16 accept
     permanent: true
     state: enabled
   become: yes
