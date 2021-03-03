@@ -1,6 +1,6 @@
 ---
 
-- name: master config
+- name: master deploy webapp
   hosts: 
     - 10.0.1.10
   gather_facts: true

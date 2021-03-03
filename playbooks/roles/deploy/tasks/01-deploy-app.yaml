@@ -20,6 +20,7 @@
   command: "kubectl create namespace webapp-volumes"
   become: yes
 
+
 #Define persistent volume
 - name: Persistent volume
   command: "kubectl apply -f kubectl apply -f /web-app/nfs-pv.yaml"
