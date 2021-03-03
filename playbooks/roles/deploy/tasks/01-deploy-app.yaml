@@ -25,7 +25,7 @@
 
 # creating a namespace
 - name: Create a namespace
-  command: "kubectl create namespace webapp-volumes"
+  command: "kubectl create namespace -f webapp-volumes"
   become: yes
 
 #Define persistent volume
