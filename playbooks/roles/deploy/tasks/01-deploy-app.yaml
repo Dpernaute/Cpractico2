@@ -20,6 +20,13 @@
   command: "kubectl create namespace webapp-volumes"
   become: yes
 
+#create a directory
+- name: Create a directory if it does not exist
+  file:
+    path: /web-app
+    state: directory
+    mode: '0755'
+  become: yes
 
 #Define persistent volume
 - name: Persistent volume
