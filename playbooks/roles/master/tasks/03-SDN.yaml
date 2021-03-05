@@ -29,5 +29,5 @@
   become: yes
 
 - name: Installing Calico
-  command: "kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml "
+  command: "kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml --dry-run=client -o yaml"
   become: yes
