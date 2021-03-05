@@ -45,6 +45,6 @@
 
 #Deployment.
 - name: Deployment
-  command: "kubectl apply -f /web-app/webapp-volumes.yaml"
+  command: "kubectl apply -f /web-app/app-volumes.yaml"
   become: yes
 
