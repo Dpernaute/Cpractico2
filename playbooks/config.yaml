@@ -2,6 +2,8 @@
 
 - name: Set time zone, install chrony, some services and nfs.
   hosts: all
+  vars_files:
+    - "group_vars/config.yaml"
   gather_facts: true
   roles:
     - config
