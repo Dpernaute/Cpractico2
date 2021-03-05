@@ -1,7 +1,0 @@
----
-
-- name: install nfs-utils
-  dnf:
-    name: nfs-utils
-    state: latest
-  become: yes

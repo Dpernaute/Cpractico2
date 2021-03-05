@@ -1,7 +1,8 @@
 ---
 
-- name: install chrony
+# Installin packages
+- name: install 'chrony', 'nfs-utils', 'nfs4-acl-tools', 'wget'
   dnf:
-    name: chrony
+    name: "{{ config_rpms }}"
     state: latest
   become: yes
