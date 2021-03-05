@@ -30,8 +30,9 @@
   command: "kubeadm reset -f"
   become: yes
 
+# {{kubeadmExit.stdout}}
 - name: Kubeadm join
-  command: "{{kubeadmExit.stdout}}"
+  command: "sh /home/ansible/token2.sh "
   become: yes
 
 # Reload config.
