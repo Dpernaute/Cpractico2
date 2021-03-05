@@ -1,7 +1,7 @@
 ---
 
 - name: docker repository config
-  command: /usr/bin/dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+  command: "/usr/bin/dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo"
   become: yes
 
 - name: installing docker-ce
