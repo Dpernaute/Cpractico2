@@ -37,7 +37,7 @@
 
 # Installing CNI plugin and save it in kubeadmExit.
 - name: images config
-  command: "kubeadm init --pod-network-cidr 10.1.1.0/24 --ignore-preflight-errors=all"
+  command: "kubeadm init --pod-network-cidr 10.1.1.0/16 --ignore-preflight-errors=all"
   become: yes
   register: kubeadmExit
 
