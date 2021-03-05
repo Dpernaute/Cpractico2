@@ -25,9 +25,9 @@
 
 # Installing Calico.
 - name: Installing Calico
-  command: "kubectl apply -f /tmp/custom-resources.yaml"
+  command: "kubectl apply -f /tmp/custom-resources.yaml -o yaml"
   become: yes
 
 - name: Installing Calico
-  command: "kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml"
+  command: "kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml "
   become: yes
