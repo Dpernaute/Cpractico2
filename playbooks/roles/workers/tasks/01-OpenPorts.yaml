@@ -31,7 +31,7 @@
 #  become: yes
 
 - name: Kubeadm join
-  command: "{{kubeadmExit.stdout}} --ignore-preflight-errors=all"
+  command: "{{kubeadmExit.stdout}}"
   become: yes
 
 # Reload config.
