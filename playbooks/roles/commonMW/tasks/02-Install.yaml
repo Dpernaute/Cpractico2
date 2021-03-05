@@ -29,7 +29,13 @@
   with_items:
       - "k8s.conf"
 
+
+#sysctl --system
+- name: enable
+  command: "sysctl --system"
+  become: yes
+
 # disabling SWAP
 - name: swap off
-  command: swapoff  -a
+  command: "swapoff  -a"
   become: yes
