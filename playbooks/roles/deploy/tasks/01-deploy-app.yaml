@@ -29,9 +29,9 @@
   become: yes
 
 # creating a namespace
-- name: Create a namespace
-  command: "kubectl create namespace  webapp-volumes"
-  become: yes
+#- name: Create a namespace
+#  command: "kubectl create namespace  webapp-volumes"
+#  become: yes
 
 #Define persistent volume
 - name: Persistent volume
