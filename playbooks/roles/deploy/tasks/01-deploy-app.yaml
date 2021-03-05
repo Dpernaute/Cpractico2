@@ -21,7 +21,7 @@
   with_items:
       - "nfs-pv.yaml"
       - "nfs-pvc.yaml"
-      - "webapp-volumes.yaml"
+      - "app-volumes.yaml"
 
 # Deleting a namespace webapp-volumes
 - name: Delete namespace
