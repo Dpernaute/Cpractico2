@@ -26,9 +26,9 @@
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
 
-#- name: kubeadm reset
-#  command: "kubeadm reset -f"
-#  become: yes
+- name: kubeadm reset
+  command: "kubeadm reset -f"
+  become: yes
 
 - name: Kubeadm join
   command: "{{kubeadmExit.stdout}}"
