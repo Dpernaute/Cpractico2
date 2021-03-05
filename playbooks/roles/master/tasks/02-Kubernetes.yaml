@@ -56,7 +56,7 @@
 
 # new variable with last 2 lines of kubeadm init output
 - name: Echo the output kubeadmExit variable vaule last line
-  shell: cat /home/ansible/kubeadmFile.txt |tail -2
+  shell: "cat /home/ansible/kubeadmFile.txt |tail -2"
   register: kubeadmExit2lines
 
 # saving kubeadm init output 2 lines into a new file token.txt
