@@ -6,7 +6,7 @@
 
 - name: installing docker-ce
   dnf:
-    name: docker-ce-19.03.14-3.el8
+    name: docker-ce
     state: present
   become: yes
 
