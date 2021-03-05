@@ -9,7 +9,7 @@
 - name: Download foo.conf
   get_url:
     url: https://docs.projectcalico.org/manifests/custom-resources.yaml
-    dest: "/tmp/"
+    dest: /tmp/
     force: yes
   become: yes
 
