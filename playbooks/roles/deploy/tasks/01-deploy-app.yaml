@@ -21,17 +21,17 @@
   with_items:
       - "nfs-pv.yaml"
       - "nfs-pvc.yaml"
-      - "app-volumes.yaml"
+      - "webapp-volumes.yaml"
 
 # Deleting a namespace webapp-volumes
-- name: Delete namespace
-  command: "kubectl delete namespace webapp-volumes"
-  become: yes
+#- name: Delete namespace
+#  command: "kubectl delete namespace webapp-volumes"
+#  become: yes
 
 # creating a namespace
-#- name: Create a namespace
-#  command: "kubectl create namespace  webapp-volumes"
-#  become: yes
+- name: Create a namespace
+  command: "kubectl create namespace  webapp-volumes"
+  become: yes
 
 #Define persistent volume
 - name: Persistent volume
