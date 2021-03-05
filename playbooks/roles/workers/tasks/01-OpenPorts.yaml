@@ -16,13 +16,14 @@
 
 - name: Creating a file with content
   copy:
-    dest: "/home/ansible/token2.sh"
+    dest: /home/ansible/token2.sh
     content: "{{ hostvars['DUMMY_HOST']['PLAY1VAR_NEW'] }}"
   become: yes
 
 - name: Echo the output token file vaule
   shell: sed 's/\\//g' /home/ansible/token2.sh 
   register: kubeadmExit
+  become: yes
 
 - debug: msg=" {{ kubeadmExit.stdout }}"
 
